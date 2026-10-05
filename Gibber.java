@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * A utility class for securely handling AES-GCM encryption
  *
- * @author Jerrimiah Tomaso
+ * @author 9-Iris
  * @version 1.0
 */
 
