@@ -34,8 +34,6 @@ String decrypted = cipher.decrypt(encrypted);
 }
 ```
 
-For full documentation see: **ADD LINK HERE**
-
 
 
 
