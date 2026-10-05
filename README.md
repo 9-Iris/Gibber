@@ -1,6 +1,6 @@
 # Gibber 1.0
 
-Gibber is an easy to use encryption wrapper utilizing the AES-256 encryption built into the Java Standard Library.
+Gibber is an easy to use encryption wrapper utilizing the AES-256 encryption.
 
 ## Highlights
 
