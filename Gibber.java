@@ -1,16 +1,16 @@
-import java.util.Arrays;
 import java.security.SecureRandom;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 import javax.crypto.spec.GCMParameterSpec;
 import java.util.HexFormat;
+import java.util.Arrays;
 import java.nio.charset.StandardCharsets;
 
 /**
  * A utility class for securely handling AES-GCM encryption
  *
- * @author 9-Iris
+ * @author Jerrimiah Tomaso
  * @version 1.0
 */
 
@@ -106,6 +106,7 @@ public class Gibber {
     public static class Key {
 
         private final byte[] secureKey;
+        private boolean destroyed = false;
 
         /**
          * Generates a random key and sets it as secureKey.
@@ -147,9 +148,26 @@ public class Gibber {
          * @return The secureKey as a array of bytes
         */
 
-        public byte[] getEncoded() {
-
+        public byte[] getEncoded() throws Exception {
+            if (destroyed) {
+                throw new Exception("This key has been destroyed!");
+            }
             return this.secureKey.clone();
+
+        }
+
+        /**
+         * Zero outs the secure key.
+        */
+
+        public void destroy() {
+            
+            if (this.secureKey != null) {
+
+                Arrays.fill(this.secureKey, (byte) 0);
+                destroyed = true;
+
+            }
 
         }
 
@@ -161,6 +179,9 @@ public class Gibber {
 
         @Override
         public String toString() {
+            if (destroyed) {
+                throw new IllegalStateException("This key has been destroyed!");
+            }
             return HexFormat.of().formatHex(this.secureKey);
         }
 
