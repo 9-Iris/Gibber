@@ -24,10 +24,14 @@ public class Main {
       
       // 2. Initialize a Gibber using the new key
       Gibber cipher = new Gibber(secureKey);
-      
+
+      // 3. Decode and encoding
       String plainText = "The quick brown fox jumps over the lazy dog.";
       String encrypted = cipher.encrypt(plainText);
       String decrypted = cipher.decrypt(encrypted);
+
+      // 4. Destroy key before program ends
+      secureKey.destroy();
 
    }
 
